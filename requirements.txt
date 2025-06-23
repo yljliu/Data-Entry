@@ -1,0 +1,6 @@
+google-genai
+pandas
+opencv-python
+pdf2image
+pytesseract
+pillow
