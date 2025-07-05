@@ -31,7 +31,7 @@ class Convert():
             If the pixel is below 120, set it to 255 (white).  We want to turn the background black, and the text white """
             image = numpy.array(image)
             image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-            threshold, image = cv2.threshold(image, 180, 255, cv2.THRESH_BINARY_INV)
+            threshold, image = cv2.threshold(image, 160, 255, cv2.THRESH_BINARY)
             np_images.append(image)
             
         return np_images
@@ -43,8 +43,5 @@ class Convert():
         texts = []
         for image in np_images:
             text = pytesseract.image_to_string(image).lower()
-
-            """ Only add Texts that contain our rates """
-            if "high season" in text and "mid-season" in text and "low season" in text:
-                texts.append(text)
+            texts.append(text)
         return texts

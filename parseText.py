@@ -19,14 +19,13 @@ class Parse:
                 2. Destination of the safari camp (e.g. Masai Mara, Lake Nakuru)
                 3. Area of the safari camp (e.g. Narok, Aruba Dam)
                 4. Type of package: If the rate includes game drives, label it as a ground package. If it only includes meals/accommodation without game drives, label it as a full-board package.
-                5. List each room type with its per-person nightly rate, organized by High Season, Mid Season, and Low Season. 
+                5. List each room type along with its per-person nightly rate, organized by High Season, Mid Season, and Low Season. If other seasonal terms are used, interpret them as follows using context clues. For example: Treat Shoulder Season as Low Season.
                    Exclude child rates. If a room type does not explicitly say 'honeymoon' or 'family', and there’s a separate single occupancy rate, then:
                 Create two versions of the room:
                         -One for double occupancy (using the shared rate)
                         -One for single occupancy (using the single rate)
                 6. Include conservation or park/reserve entry fees (e.g. Masai Mara Reserve fees), and specify if they vary by season. Ignore Child Fees"""
 
-        
         return instructions
 
     """ Ask the AI to parse our text: if successful, return the parsed text otherwise if we exhaust our resources, exit the program """
@@ -75,12 +74,12 @@ class Parse:
                 3. IF we succeed, return the dictionary
 
             """
-            data_in_dictionary = format.format_data()
-            if data_in_dictionary == "Resource Exhausted":
+            data_in_dictionarys = format.format_data()
+            if data_in_dictionarys == "Resource Exhausted":
                 return "Resource Exhausted"
-            elif data_in_dictionary == "Failed to decode JSON data 3 times, manually check this data":
+            elif data_in_dictionarys == "Failed to decode JSON data 3 times, manually check this data":
                 return "Failed to convert data"
             else:
-                return data_in_dictionary
+                return data_in_dictionarys
 
         
